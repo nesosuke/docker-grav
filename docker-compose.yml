@@ -1,7 +1,20 @@
+version: "3"
+
+volumes:
+  grav-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./grav-data
+      o: bind
+
 services:
   grav:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - 8080:80
     volumes:
-      - ./grav-data:/var/www/html
+      - grav-data:/var/www/grav
+    restart: always

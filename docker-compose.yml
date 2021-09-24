@@ -10,11 +10,12 @@ volumes:
 
 services:
   grav:
+    container_name: grav
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - 8080:8080
+      - 127.0.0.1:8080:8080
     volumes:
       - grav-data:/var/www/grav
     restart: always
